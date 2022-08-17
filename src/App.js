@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -19,6 +19,10 @@ function loadScript(src) {
 function App() {
 	const [name, setName] = useState('Mehul')
 
+	const sendDataToReactNativeApp = async () => {
+		window.ReactNativeWebView.postMessage('Data from WebView / Website');
+	  };
+
 	async function displayRazorpay() {
 		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
@@ -34,14 +38,16 @@ function App() {
 		console.log(data)
 
 		const options = {
-			key: 'rzp_test_uGoq5ABJztRAhk',
-			currency: data.currency,
-			amount: data.amount.toString(),
-			order_id: data.id,
+			key: 'rzp_test_6i2006Za1fnyi8',
+			currency: 'INR',
+			amount: data?.applicationFee?.toString(),
+			order_id: data.razorpayOrderId,
 			name: 'Donation',
 			description: 'Thank you for nothing. Please give us some money',
 			image: 'http://localhost:1337/logo.svg',
 			handler: function (response) {
+				console.log(response, 'response------')
+				sendDataToReactNativeApp()
 				alert(response.razorpay_payment_id)
 				alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
@@ -49,7 +55,7 @@ function App() {
 			prefill: {
 				name,
 				email: 'sdfdsjfh2@ndsfdf.com',
-				phone_number: '9899999999'
+				contact: '+919899999999'
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
