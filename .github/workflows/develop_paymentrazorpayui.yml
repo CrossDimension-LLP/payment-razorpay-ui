@@ -59,4 +59,4 @@ jobs:
           app-name: 'paymentrazorpayui'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4F57262400A245F7B5BBCDB5653A59AC }}
-          package: .
+          package: release.zip
