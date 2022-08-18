@@ -29,7 +29,7 @@ const App = ({value}, ref) => {
 	 
 	 // This will only work for Android need to change
 	 // https://stackoverflow.com/a/58118984
-	 document.addEventListener("message", handleEvent);
+	//  document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
 		window.ReactNativeWebView.postMessage(`${data}`);
@@ -37,6 +37,7 @@ const App = ({value}, ref) => {
 
 	  useImperativeHandle(ref, () => ({
 		handleEvent: (message) => {
+			alert('enter in ref')
 			const details = JSON.parse(message.data) || {};
 			alert(JSON.stringify(details));
 			setUserDetails({});
