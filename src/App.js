@@ -31,7 +31,7 @@ function App() {
 			return
 		}
 
-		const data = await fetch('https://www.crossdimension.in/paymentManagement/v1.0/order', { method: 'POST', mode: 'cors', headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://www.crossdimension.in/','Access-Control-Allow-Methods': 'GET, OPTIONS, POST'}}).then((t) =>
+		const data = await fetch('https://paymentrazorpaybe.azurewebsites.net/paymentManagement/v1.0/order', { method: 'POST'}).then((t) =>
 			t.json()
 		)
 
