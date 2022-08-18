@@ -21,6 +21,7 @@ const App = () => {
 	const handleEvent = (message) => {
 		console.log(message.data);
 		alert(message.data);
+		alert(JSON.parse(message.data))
 	 }
 	 
 	 // This will only work for Android need to change
