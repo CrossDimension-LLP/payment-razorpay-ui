@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -17,8 +17,10 @@ function loadScript(src) {
 }
 
 const App = () => {
-
+	const [useDetails, setUserDetails] = useState({})
 	const handleEvent = (message) => {
+		const details = JSON.parse(message.data) || {};
+		setUserDetails({...details});
 		console.log(message.data);
 		alert(message.data);
 		alert(JSON.parse(message.data))
@@ -64,9 +66,9 @@ const App = () => {
 				alert(response.razorpay_signature)
 			},
 			prefill: {
-				name: 'test',
-				email: 'sdfdsjfh2@ndsfdf.com',
-				contact: '+919899999999'
+				name: useDetails?.name,
+				email: useDetails?.email,
+				contact: useDetails?.mobileNumber
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
