@@ -18,8 +18,8 @@ function loadScript(src) {
 
 function App() {
 
-	const sendDataToReactNativeApp = async (data) => {
-		window.ReactNativeWebView.postMessage(data);
+	const sendDataToReactNativeApp = (data) => {
+		window.ReactNativeWebView.postMessage(`${data}`);
 	  };
 
 	async function displayRazorpay() {
@@ -46,7 +46,7 @@ function App() {
 			image: 'http://localhost:1337/logo.svg',
 			handler: function (response) {
 				console.log(response, 'response------')
-				sendDataToReactNativeApp({ paymentId: response.razorpay_payment_id})
+				sendDataToReactNativeApp(response.razorpay_payment_id)
 				alert(response.razorpay_payment_id)
 				alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
