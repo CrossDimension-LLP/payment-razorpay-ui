@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -29,11 +29,15 @@ const App = () => {
 	 
 	 // This will only work for Android need to change
 	 // https://stackoverflow.com/a/58118984
-	 document.addEventListener("message", handleEvent);
+	//  document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
 		window.ReactNativeWebView.postMessage(`${data}`);
 	  };
+
+	  useEffect(() => {
+		document.addEventListener("message", handleEvent);
+	  }, [])
 
 	  
 
