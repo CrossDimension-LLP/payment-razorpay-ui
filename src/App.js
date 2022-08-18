@@ -18,14 +18,14 @@ function loadScript(src) {
 
 const App = ({value}, ref) => {
 	const [useDetails, setUserDetails] = useState({})
-	const handleEvent = (message) => {
-		const details = JSON.parse(message.data) || {};
-		alert(JSON.stringify(details));
-		setUserDetails({});
-		console.log(message.data);
-		alert(message.data);
-		alert(JSON.parse(message.data))
-	 }
+	// const handleEvent = (message) => {
+	// 	const details = JSON.parse(message.data) || {};
+	// 	alert(JSON.stringify(details));
+	// 	setUserDetails({});
+	// 	console.log(message.data);
+	// 	alert(message.data);
+	// 	alert(JSON.parse(message.data))
+	//  }
 	 
 	 // This will only work for Android need to change
 	 // https://stackoverflow.com/a/58118984
