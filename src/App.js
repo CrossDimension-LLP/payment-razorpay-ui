@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -16,8 +16,7 @@ function loadScript(src) {
 	})
 }
 
-function App() {	
-	const [name, setName] = useState('Mehul')
+function App() {
 
 	const sendDataToReactNativeApp = async (data) => {
 		window.ReactNativeWebView.postMessage(data);
@@ -31,7 +30,7 @@ function App() {
 			return
 		}
 
-		const data = await fetch('https://payment-xd.herokuapp.com/paymentManagement/v1.0/order', { method: 'POST', mode: 'cors', headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://payment-xd.herokuapp.com/','Access-Control-Allow-Methods': 'GET, OPTIONS, POST'}}).then((t) =>
+		const data = await fetch('https://paymentrazorpaybe.azurewebsites.net/paymentManagement/v1.0/order', { method: 'POST'}).then((t) =>
 			t.json()
 		)
 
@@ -53,7 +52,7 @@ function App() {
 				alert(response.razorpay_signature)
 			},
 			prefill: {
-				name,
+				name: 'test',
 				email: 'sdfdsjfh2@ndsfdf.com',
 				contact: '+919899999999'
 			}
@@ -69,14 +68,14 @@ function App() {
 				<p>
 					Edit <code>src/App.js</code> and save to reload.
 				</p>
-				<a
+				<button
 					className="App-link"
 					onClick={displayRazorpay}
-					target="_blank"
 					rel="noopener noreferrer"
+					
 				>
 					Donate $5
-				</a>
+				</button>
 			</header>
 		</div>
 	)
