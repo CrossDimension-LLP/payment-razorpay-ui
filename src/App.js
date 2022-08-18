@@ -23,7 +23,7 @@ const App = () => {
 		alert(message.data);
 	 }
 	 
-	 // This will only work for Android
+	 // This will only work for Android need to change
 	 // https://stackoverflow.com/a/58118984
 	 document.addEventListener("message", handleEvent);
 
