@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -16,7 +16,7 @@ function loadScript(src) {
 	})
 }
 
-const App = () => {
+const App = ({value}, ref) => {
 	const [useDetails, setUserDetails] = useState({})
 	const handleEvent = (message) => {
 		const details = JSON.parse(message.data) || {};
@@ -29,15 +29,24 @@ const App = () => {
 	 
 	 // This will only work for Android need to change
 	 // https://stackoverflow.com/a/58118984
-	//  document.addEventListener("message", handleEvent);
+	 document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
 		window.ReactNativeWebView.postMessage(`${data}`);
 	  };
 
-	  useEffect(() => {
-		document.addEventListener("message", handleEvent);
-	  }, [])
+	  useImperativeHandle(ref, () => ({
+		handleEvent: (message) => {
+			const details = JSON.parse(message.data) || {};
+			alert(JSON.stringify(details));
+			setUserDetails({});
+			console.log(message.data);
+			alert(message.data);
+			alert(JSON.parse(message.data))
+		}
+	  }))
+
+	//   window.location.reload(true);
 
 	  
 
@@ -100,4 +109,4 @@ const App = () => {
 	)
 }
 
-export default App
+export default forwardRef(App)
