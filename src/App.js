@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -16,11 +16,18 @@ function loadScript(src) {
 	})
 }
 
-function App() {
+const App = ({}, ref) => {
 
 	const sendDataToReactNativeApp = (data) => {
 		window.ReactNativeWebView.postMessage(`${data}`);
 	  };
+
+	  useImperativeHandle(ref, () => ({
+		message: (message) => {
+			console.log('message', message);
+			alert(message)
+		}
+	  }))
 
 	async function displayRazorpay() {
 		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
@@ -81,4 +88,4 @@ function App() {
 	)
 }
 
-export default App
+export default forwardRef(App)
