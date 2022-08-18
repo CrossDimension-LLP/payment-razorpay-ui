@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -17,7 +17,7 @@ function loadScript(src) {
 }
 
 function App() {
-	const [name, setName] = useState('Mehul')
+	//const [name, setName] = useState('Mehul')
 
 	const sendDataToReactNativeApp = async () => {
 		window.ReactNativeWebView.postMessage('Data from WebView / Website');
@@ -53,7 +53,7 @@ function App() {
 				alert(response.razorpay_signature)
 			},
 			prefill: {
-				name,
+				name: 'test',
 				email: 'sdfdsjfh2@ndsfdf.com',
 				contact: '+919899999999'
 			}
@@ -69,14 +69,14 @@ function App() {
 				<p>
 					Edit <code>src/App.js</code> and save to reload.
 				</p>
-				<a
+				<button
 					className="App-link"
 					onClick={displayRazorpay}
-					target="_blank"
 					rel="noopener noreferrer"
+					
 				>
 					Donate $5
-				</a>
+				</button>
 			</header>
 		</div>
 	)
