@@ -16,7 +16,7 @@ function loadScript(src) {
 	})
 }
 
-const App = ({}, ref) => {
+const App = ({value}, ref) => {
 
 	const sendDataToReactNativeApp = (data) => {
 		window.ReactNativeWebView.postMessage(`${data}`);
@@ -68,6 +68,7 @@ const App = ({}, ref) => {
 		paymentObject.open()
 	}
 
+	console.log(value, 'value-----')
 	return (
 		<div className="App">
 			<header className="App-header">
