@@ -16,11 +16,11 @@ function loadScript(src) {
 	})
 }
 
-function App() {
+function App() {	
 	const [name, setName] = useState('Mehul')
 
-	const sendDataToReactNativeApp = async () => {
-		window.ReactNativeWebView.postMessage('Data from WebView / Website');
+	const sendDataToReactNativeApp = async (data) => {
+		window.ReactNativeWebView.postMessage(data);
 	  };
 
 	async function displayRazorpay() {
@@ -47,7 +47,7 @@ function App() {
 			image: 'http://localhost:1337/logo.svg',
 			handler: function (response) {
 				console.log(response, 'response------')
-				sendDataToReactNativeApp()
+				sendDataToReactNativeApp({ paymentId: response.razorpay_payment_id})
 				alert(response.razorpay_payment_id)
 				alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
