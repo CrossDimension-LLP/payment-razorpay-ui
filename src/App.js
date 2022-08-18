@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle } from 'react'
+import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
@@ -16,18 +16,22 @@ function loadScript(src) {
 	})
 }
 
-const App = ({value}, ref) => {
+const App = () => {
+
+	const handleEvent = (message) => {
+		console.log(message.data);
+		alert(message.data);
+	 }
+	 
+	 // This will only work for Android
+	 // https://stackoverflow.com/a/58118984
+	 document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
 		window.ReactNativeWebView.postMessage(`${data}`);
 	  };
 
-	  useImperativeHandle(ref, () => ({
-		message: (message) => {
-			console.log('message', message);
-			alert(message)
-		}
-	  }))
+	  
 
 	async function displayRazorpay() {
 		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
@@ -68,7 +72,6 @@ const App = ({value}, ref) => {
 		paymentObject.open()
 	}
 
-	console.log(value, 'value-----')
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -89,4 +92,4 @@ const App = ({value}, ref) => {
 	)
 }
 
-export default forwardRef(App)
+export default App
