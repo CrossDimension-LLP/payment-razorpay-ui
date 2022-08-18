@@ -20,6 +20,7 @@ const App = () => {
 	const [useDetails, setUserDetails] = useState({})
 	const handleEvent = (message) => {
 		const details = JSON.parse(message.data) || {};
+		alert(JSON.stringify(details));
 		setUserDetails({...details});
 		console.log(message.data);
 		alert(message.data);
