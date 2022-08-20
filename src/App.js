@@ -80,10 +80,16 @@ const App = () => {
 				alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
 			},
+			modal: {
+				ondismiss: function(){
+					alert('close icon access')
+					//  window.location.replace("//put your redirect URL");
+				 }
+			},
 			prefill: {
-				name: useDetails?.name,
-				email: useDetails?.email,
-				contact: useDetails?.mobileNumber
+				name: useDetails?.name || 'Makul',
+				email: useDetails?.email || 'test@email.com',
+				contact: useDetails?.mobileNumber || '+911234567890'
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
