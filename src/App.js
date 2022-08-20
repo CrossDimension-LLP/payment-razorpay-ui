@@ -32,6 +32,7 @@ const App = () => {
 	 	document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
+		alert('trigere here')
 		window.ReactNativeWebView.postMessage(data);
 	  };
 
