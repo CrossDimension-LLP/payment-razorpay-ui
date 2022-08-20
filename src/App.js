@@ -75,13 +75,14 @@ const App = () => {
 			image: 'http://localhost:1337/logo.svg',
 			handler: function (response) {
 				console.log(response, 'response------')
-				sendDataToReactNativeApp(response.razorpay_payment_id)
+				sendDataToReactNativeApp(JSON.stringify({paymentId:response.razorpay_payment_id}))
 				alert(response.razorpay_payment_id)
 				alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
 			},
 			modal: {
 				ondismiss: function(){
+				sendDataToReactNativeApp(JSON.stringify({closeIconTrigger: true}))
 					alert('close icon access')
 					//  window.location.replace("//put your redirect URL");
 				 }
