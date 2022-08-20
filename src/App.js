@@ -32,8 +32,8 @@ const App = () => {
 	 	document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
-		alert('trigere here')
-		window.ReactNativeWebView.postMessage(data);
+		alert('trigere here', data)
+		window.ReactNativeWebView.postMessage(JSON.stringify(data));
 	  };
 
 	//   useImperativeHandle(ref, () => ({
@@ -76,14 +76,14 @@ const App = () => {
 			image: 'http://localhost:1337/logo.svg',
 			handler: function (response) {
 				console.log(response, 'response------')
-				sendDataToReactNativeApp(JSON.stringify({paymentId:response.razorpay_payment_id}))
+				sendDataToReactNativeApp({paymentId: response.razorpay_payment_id})
 				alert(response.razorpay_payment_id)
 				alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
 			},
 			modal: {
 				ondismiss: function(){
-				sendDataToReactNativeApp(JSON.stringify({closeIconTrigger: true}))
+				sendDataToReactNativeApp({closeIconTrigger: true})
 					alert('close icon access')
 					//  window.location.replace("//put your redirect URL");
 				 }
