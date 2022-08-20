@@ -32,7 +32,7 @@ const App = () => {
 	 	document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
-		window.ReactNativeWebView.postMessage(`${data}`);
+		window.ReactNativeWebView.postMessage(data);
 	  };
 
 	//   useImperativeHandle(ref, () => ({
