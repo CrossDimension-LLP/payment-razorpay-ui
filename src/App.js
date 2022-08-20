@@ -78,8 +78,8 @@ const App = () => {
 			handler: function (response) {
 				console.log(response, 'response------')
 				sendDataToReactNativeApp({paymentId: response.razorpay_payment_id})
-				alert(response.razorpay_payment_id)
-				alert(response.razorpay_order_id)
+				// alert(response.razorpay_payment_id)
+				// alert(response.razorpay_order_id)
 				alert(response.razorpay_signature)
 			},
 			modal: {
