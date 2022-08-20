@@ -32,8 +32,9 @@ const App = () => {
 	 	document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
-		alert('trigere here', data)
-		window.ReactNativeWebView.postMessage(JSON.stringify(data));
+		alert('trigere here')
+		console.log(data, 'data--------')
+		window.ReactNativeWebView.postMessage(`${JSON.stringify(data)}`);
 	  };
 
 	//   useImperativeHandle(ref, () => ({
