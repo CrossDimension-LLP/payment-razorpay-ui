@@ -20,14 +20,9 @@ const App = () => {
 	let detailsVal = {}
 	const handleEvent = (message) => {
 		const details = JSON.parse(message.data) || {};
-		// alert(JSON.stringify(details));
-		alert(message.data)
-		alert(`${JSON.stringify(details)} | Data trigere`)
 		setUserDetails({...details});
 		detailsVal={...details}
 		console.log(message.data);
-		// alert(message.data);
-		// alert(JSON.parse(message.data))
 	 }
 	 
 	 // This will only work for Android need to change
@@ -35,7 +30,6 @@ const App = () => {
 	 	document.addEventListener("message", handleEvent);
 
 	const sendDataToReactNativeApp = (data) => {
-		alert('trigere here')
 		console.log(data, 'data--------')
 		window.ReactNativeWebView.postMessage(`${JSON.stringify(data)}`);
 	  };
@@ -69,8 +63,6 @@ const App = () => {
 		)
 
 		console.log(data)
-		alert(`${JSON.stringify(details)} | data user state`)
-		alert(`${JSON.stringify(detailsVal)} | data user details`)
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
@@ -84,12 +76,12 @@ const App = () => {
 				sendDataToReactNativeApp({paymentId: response.razorpay_payment_id})
 				// alert(response.razorpay_payment_id)
 				// alert(response.razorpay_order_id)
-				alert(response.razorpay_signature)
+				// alert(response.razorpay_signature)
 			},
 			modal: {
 				ondismiss: function(){
 				sendDataToReactNativeApp({closeIconTrigger: true})
-					alert('close icon access')
+					// alert('close icon access')
 					//  window.location.replace("//put your redirect URL");
 				 }
 			},
