@@ -65,7 +65,6 @@ const App = () => {
 		)
 
 		console.log(data)
-		sendDataToReactNativeApp({fetchDetails: true})
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
@@ -96,11 +95,15 @@ const App = () => {
 		}
 		const paymentObject = new window.Razorpay(options)
 		paymentObject.open()
+		sendDataToReactNativeApp({fetchDetails: true})
+
 	}
 
 	return (
 		<div className="App">
 			{displayRazorpay()}
+		{sendDataToReactNativeApp({fetchDetails: true})}
+			
 		</div>
 	)
 }
