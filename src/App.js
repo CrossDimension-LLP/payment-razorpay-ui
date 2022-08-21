@@ -71,7 +71,6 @@ const App = () => {
 		console.log(data)
 		alert(`${JSON.stringify(details)} | data user state`)
 		alert(`${JSON.stringify(detailsVal)} | data user details`)
-		alert
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
