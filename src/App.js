@@ -16,7 +16,7 @@ function loadScript(src) {
 }
 
 const App = () => {
-	const [useDetails, setUserDetails] = useState({})
+	const [userDetails, setUserDetails] = useState({})
 	const handleEvent = (message) => {
 		const details = JSON.parse(message.data) || {};
 		// alert(JSON.stringify(details));
@@ -66,6 +66,7 @@ const App = () => {
 		)
 
 		console.log(data)
+		alert(JSON.stringify(userDetails))
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
@@ -89,9 +90,9 @@ const App = () => {
 				 }
 			},
 			prefill: {
-				name: useDetails?.name || 'Makul',
-				email: useDetails?.email || 'test@email.com',
-				contact: useDetails?.mobileNumber || '+911234567890'
+				name: userDetails?.name || 'Makul',
+				email: userDetails?.email || 'test@email.com',
+				contact: userDetails?.mobileNumber || '+911234567890'
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
