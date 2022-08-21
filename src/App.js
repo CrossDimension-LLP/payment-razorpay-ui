@@ -17,12 +17,14 @@ function loadScript(src) {
 
 const App = () => {
 	const [userDetails, setUserDetails] = useState({})
+	let detailsVal = {}
 	const handleEvent = (message) => {
 		const details = JSON.parse(message.data) || {};
 		// alert(JSON.stringify(details));
 		alert(message.data)
 		alert(`${JSON.stringify(details)} | Data trigere`)
 		setUserDetails({...details});
+		detailsVal={...details}
 		console.log(message.data);
 		// alert(message.data);
 		// alert(JSON.parse(message.data))
@@ -67,7 +69,9 @@ const App = () => {
 		)
 
 		console.log(data)
-		alert(JSON.stringify(details))
+		alert(`${JSON.stringify(details)} | data user state`)
+		alert(`${JSON.stringify(detailsVal)} | data user details`)
+		alert
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
@@ -91,9 +95,9 @@ const App = () => {
 				 }
 			},
 			prefill: {
-				name: details?.name || 'Makul',
-				email: details?.email || 'test@email.com',
-				contact: details?.mobileNumber || '+911234567890'
+				name: details?.name || detailsVal?.name || 'Makul',
+				email: details?.email || detailsVal?.email || 'test@email.com',
+				contact: details?.mobileNumber || detailsVal?.mobileNumber || '+911234567890'
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
