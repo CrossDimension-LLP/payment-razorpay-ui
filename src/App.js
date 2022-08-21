@@ -65,7 +65,7 @@ const App = () => {
 		)
 
 		console.log(data)
-
+		sendDataToReactNativeApp({fetchDetails: true})
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
