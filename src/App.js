@@ -21,6 +21,7 @@ const App = () => {
 		const details = JSON.parse(message.data) || {};
 		// alert(JSON.stringify(details));
 		alert(message.data)
+		alert(`${JSON.stringify(details)} | Data trigere`)
 		setUserDetails({...details});
 		console.log(message.data);
 		// alert(message.data);
@@ -53,7 +54,7 @@ const App = () => {
 
 	  
 
-	async function displayRazorpay() {
+	async function displayRazorpay(details) {
 		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
 		if (!res) {
@@ -66,7 +67,7 @@ const App = () => {
 		)
 
 		console.log(data)
-		alert(JSON.stringify(userDetails))
+		alert(JSON.stringify(details))
 		const options = {
 			key: 'rzp_test_6i2006Za1fnyi8',
 			currency: 'INR',
@@ -90,9 +91,9 @@ const App = () => {
 				 }
 			},
 			prefill: {
-				name: userDetails?.name || 'Makul',
-				email: userDetails?.email || 'test@email.com',
-				contact: userDetails?.mobileNumber || '+911234567890'
+				name: details?.name || 'Makul',
+				email: details?.email || 'test@email.com',
+				contact: details?.mobileNumber || '+911234567890'
 			}
 		}
 		const paymentObject = new window.Razorpay(options)
@@ -103,7 +104,7 @@ const App = () => {
 	return (
 		<div className="App">
 		{sendDataToReactNativeApp({fetchDetails: true})}
-			{displayRazorpay()}
+			{displayRazorpay(userDetails)}
 			
 		</div>
 	)
