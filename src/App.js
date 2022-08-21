@@ -20,6 +20,7 @@ const App = () => {
 	const handleEvent = (message) => {
 		const details = JSON.parse(message.data) || {};
 		// alert(JSON.stringify(details));
+		alert(message.data)
 		setUserDetails({...details});
 		console.log(message.data);
 		// alert(message.data);
@@ -95,14 +96,13 @@ const App = () => {
 		}
 		const paymentObject = new window.Razorpay(options)
 		paymentObject.open()
-		sendDataToReactNativeApp({fetchDetails: true})
 
 	}
 
 	return (
 		<div className="App">
-			{displayRazorpay()}
 		{sendDataToReactNativeApp({fetchDetails: true})}
+			{displayRazorpay()}
 			
 		</div>
 	)
