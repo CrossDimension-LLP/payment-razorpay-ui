@@ -64,7 +64,7 @@ const App = () => {
 
 		console.log(data)
 		const options = {
-			key: 'rzp_live_pFznWOe109rCM4',
+			key: 'rzp_test_SEqv7dDtvidjLd',
 			currency: 'INR',
 			amount: data?.applicationFee?.toString(),
 			order_id: data.razorpayOrderId,
